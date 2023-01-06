@@ -43,9 +43,14 @@ nav {
   justify-content: center;
 }
 
+nav button {
+  all: unset;
+  padding: 5px;
+}
+
 .nav-button {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
 }
 
 video {

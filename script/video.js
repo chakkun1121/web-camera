@@ -1,4 +1,5 @@
 let nowFacingMode;
+let canUseEnvironmentCamera = true;
 window.onload = function () {
   cameraRequest()
   setTimeout(function () {
@@ -17,7 +18,10 @@ function cameraRequest(facingMode = "user") {
     video.play()
   }).catch(e => {
     console.log(e)
-    alert('カメラが使用できません。')
+    alert((typeof e) == String ? 'カメラが使用できません。' : "フロントカメラ以外は使用できません")
+    if ((typeof e) != String) {
+      canUseEnvironmentCamera = false
+    }
     return e;
   })
 }
@@ -38,5 +42,10 @@ function downloadDataURL(url, title = "picture") {
   a.remove();
 }
 function changeFacingMode() {
-  cameraRequest(nowFacingMode == "environment" ? "user" : "environment")
+  if (canUseEnvironmentCamera) {
+    cameraRequest(nowFacingMode == "environment" ? "user" : "environment")
+    return;
+  } else {
+    alert('カメラの切り替えはできません。')
+  }
 }
