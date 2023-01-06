@@ -38,5 +38,5 @@ function downloadDataURL(url, title = "picture") {
   a.remove();
 }
 function changeFacingMode() {
-  cameraRequest(nowFacingMode == "user" ? "user" : "environment")
+  cameraRequest(nowFacingMode == "environment" ? "user" : "environment")
 }
