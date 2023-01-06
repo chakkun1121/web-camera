@@ -1,3 +1,4 @@
+let nowFacingMode;
 window.onload = function () {
   cameraRequest()
   setTimeout(function () {
@@ -5,6 +6,7 @@ window.onload = function () {
   }, 5000)
 }
 function cameraRequest(facingMode = "user") {
+  nowFacingMode = facingMode
   navigator.mediaDevices.getUserMedia({
     video: {
       width: 1920, height: 1080, facingMode: { exact: facingMode }
@@ -25,7 +27,6 @@ function takePicture() {
   canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height)
   const dataURL = canvas.toDataURL()
   console.log(canvas.toDataURL());
-  // window.open(canvas.toDataURL(), "_target")
   downloadDataURL(dataURL)
 }
 function downloadDataURL(url, title = "picture") {
@@ -35,4 +36,7 @@ function downloadDataURL(url, title = "picture") {
   a.href = url;
   a.click();
   a.remove();
+}
+function changeFacingMode() {
+  cameraRequest(nowFacingMode == "user" ? "user" : "environment")
 }

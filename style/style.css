@@ -32,6 +32,22 @@ main {
   overflow: hidden;
 }
 
+nav {
+  position: absolute;
+  background-color: #ffffff54;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.nav-button {
+  width: 32px;
+  height: 32px;
+}
+
 video {
   position: absolute;
   top: 50%;
@@ -40,4 +56,12 @@ video {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
+}
+
+@media (width<500px) {
+  nav {
+    top: auto;
+    left: 0;
+    display: flex;
+  }
 }
