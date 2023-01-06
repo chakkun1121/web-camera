@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>カメラ</title>
   <link href="./style/style.css" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ddd">
+  <meta name="description" content="chakkunが作成したウェブカメラアプリです。このアプリでは画像はローカルで処理するので安全です。" />
 </head>
 
 <body>
@@ -19,7 +22,7 @@
   <canvas id="canvas" style="display:none"></canvas>
   <nav>
     <div>
-      <button onclick="takePicture()">
+      <button onclick="takePicture()" aria-label="撮影">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_"
           x="0px" y="0px" viewBox="0 0 512 512" class="nav-button" xml:space="preserve">
           <g>
@@ -30,7 +33,7 @@
       </button>
     </div>
     <div>
-      <button onclick="changeFacingMode()">
+      <button onclick="changeFacingMode()" aria-label="カメラの切り替え">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_"
           x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" class="nav-button">
           <g>
@@ -45,6 +48,17 @@
   </nav>
   <footer></footer>
   <script src="script/video.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function (registration) {
+        // 登録成功
+        console.log('ServiceWorker の登録に成功しました。スコープ: ', registration.scope);
+      }).catch(function (err) {
+        // 登録失敗
+        console.log('ServiceWorker の登録に失敗しました。', err);
+      });
+    }
+  </script>
 </body>
 
 </html>

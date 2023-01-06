@@ -1,0 +1,22 @@
+{
+  "name": "カメラアプリ",
+  "short_name": "カメラ",
+  "description": "chakkunが作成したウェブカメラアプリです。写真は本体で処理されるので安全です。",
+  "icons": [
+    {
+      "src": "img/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "id": "/index.html",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "theme_color": "#ddd",
+  "background_color": "#ddd",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "orientation": "any"
+}
