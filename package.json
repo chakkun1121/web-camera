@@ -1,0 +1,36 @@
+{
+  "name": "attack25",
+  "version": "1.0.0",
+  "description": "アタック25(非公式)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "build": "electron-packager . --overwrite",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "electron": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakkun1121/attack25.git"
+  },
+  "keywords": [],
+  "author": "chakkun1121",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chakkun1121/attack25/issues"
+  },
+  "homepage": "https://github.com/chakkun1121/attack25#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "electron": "^22.0.3"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
