@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/chakkun1121/web-camera/issues"
   },
-  "homepage": "https://github.com/chakkun1121/web-camera#readme",
+  "homepage": "https://chakkun1121.github.io",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.4",
     "@electron-forge/maker-deb": "^6.0.4",
