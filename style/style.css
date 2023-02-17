@@ -1,26 +1,27 @@
+* {
+  user-select: none;
+}
 body {
   margin: 0;
+  width: 100vw;
   height: 100vh;
 }
-
 body::-webkit-scrollbar {
   display: none;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-}
-
 header {
+  app-region: drag;
+  display: grid;
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
-  padding: 8px;
   margin: 0;
   z-index: 5;
+  height: 60px;
   background: #ffffff54;
+  align-items: center;
 }
 
 main {
@@ -69,4 +70,8 @@ video {
     left: 0;
     display: flex;
   }
+}
+header h1 {
+  margin: 0;
+  padding: 0 10px;
 }

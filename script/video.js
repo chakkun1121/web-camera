@@ -2,9 +2,9 @@ let nowFacingMode;
 let canUseEnvironmentCamera = true;
 window.onload = function () {
   cameraRequest();
-  setTimeout(function () {
-    document.querySelector("header").style.top = "-100px";
-  }, 5000);
+  // setTimeout(function () {
+  //   document.querySelector("header").style.top = "-100px";
+  // }, 5000);
 };
 function cameraRequest(facingMode = "user") {
   nowFacingMode = facingMode;
