@@ -1,19 +1,13 @@
-let nowFacingMode;
-let canUseEnvironmentCamera = true;
 window.onload = function () {
   cameraRequest();
-  // setTimeout(function () {
-  //   document.querySelector("header").style.top = "-100px";
-  // }, 5000);
 };
-function cameraRequest(facingMode = "user") {
-  nowFacingMode = facingMode;
+function cameraRequest(deviceID) {
   navigator.mediaDevices
     .getUserMedia({
       video: {
         width: 1920,
         height: 1080,
-        facingMode: { exact: facingMode },
+        deviceId: deviceID,
       },
       audio: false,
     })
@@ -50,11 +44,22 @@ function downloadDataURL(url, title = "") {
   a.click();
   a.remove();
 }
-function changeFacingMode() {
-  if (canUseEnvironmentCamera) {
-    cameraRequest(nowFacingMode == "environment" ? "user" : "environment");
-    return;
-  } else {
-    alert("カメラの切り替えはできません。");
-  }
+function changeCameraById(deviceID) {
+  document.getElementById("camerasListPopupMain").style.display = "none";
+  cameraRequest(deviceID);
+}
+
+async function showCamerasList() {
+  const showSpace = document.getElementById("camerasList");
+  document.getElementById("camerasListPopupMain").style.display = "block";
+  showSpace.innerHTML = "";
+  const devices = (await navigator.mediaDevices.enumerateDevices())
+    .filter((device) => device.kind === "videoinput")
+    .map((device) => {
+      showSpace.innerHTML += `<li onclick="changeCameraById('${device.deviceId}')">${device.label}</li>`;
+      return {
+        text: device.label,
+        value: device.deviceId,
+      };
+    });
 }

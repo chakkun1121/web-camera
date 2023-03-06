@@ -33,7 +33,7 @@
       </button>
     </div>
     <div>
-      <button onclick="changeFacingMode()" aria-label="カメラの切り替え">
+      <button onclick="showCamerasList()" aria-label="カメラの切り替え">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_"
           x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" class="nav-button">
           <g>
@@ -63,6 +63,10 @@
       </button>
     </div>
   </nav>
+  <div class="cameras-list-popup-main" id="camerasListPopupMain">
+    <h1>使用可能なカメラ一覧</h1>
+    <ul id="camerasList"></ul>
+  </div>
   <footer></footer>
   <script src="script/script.js" defer></script>
   <script src="script/video.js" defer></script>
