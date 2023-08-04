@@ -1,5 +1,8 @@
 window.onload = function () {
   cameraRequest();
+  setTimeout(function () {
+    document.querySelector("header").classList.add("hidden");
+  }, 5000);
 };
 function cameraRequest(deviceID) {
   navigator.mediaDevices
@@ -17,14 +20,7 @@ function cameraRequest(deviceID) {
     })
     .catch((e) => {
       console.log(e);
-      alert(
-        typeof e == String
-          ? "カメラが使用できません。"
-          : "フロントカメラ以外は使用できません"
-      );
-      if (typeof e != String) {
-        canUseEnvironmentCamera = false;
-      }
+      alert("カメラが使用できません。");
       return e;
     });
 }
@@ -45,21 +41,30 @@ function downloadDataURL(url, title = "") {
   a.remove();
 }
 function changeCameraById(deviceID) {
-  document.getElementById("camerasListPopupMain").style.display = "none";
+  document.getElementById("camerasListPopupMain").classList.add("hidden");
   cameraRequest(deviceID);
 }
 
 async function showCamerasList() {
   const showSpace = document.getElementById("camerasList");
-  document.getElementById("camerasListPopupMain").style.display = "block";
+  document.getElementById("camerasListPopupMain").classList.remove("hidden");
   showSpace.innerHTML = "";
-  const devices = (await navigator.mediaDevices.enumerateDevices())
+  const devicesDom = (await navigator.mediaDevices.enumerateDevices())
     .filter((device) => device.kind === "videoinput")
     .map((device) => {
-      showSpace.innerHTML += `<li onclick="changeCameraById('${device.deviceId}')">${device.label}</li>`;
+      // showSpace.innerHTML += `<li onclick="changeCameraById('${device.deviceId}')">${device.label}</li>`;
+      const dom = document.createElement("li");
+      dom.innerText = device.label;
+      dom.onclick = () => {
+        changeCameraById(device.deviceId);
+      };
+      return dom;
       return {
         text: device.label,
         value: device.deviceId,
       };
     });
+  devicesDom.forEach((dom) => {
+    showSpace.appendChild(dom);
+  });
 }

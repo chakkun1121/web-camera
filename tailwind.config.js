@@ -131,6 +131,9 @@ module.exports = {
           },
         ],
       },
+      minWidth: {
+        screen: "100vw",
+      },
     },
   },
   plugins: [],
