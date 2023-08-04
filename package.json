@@ -4,8 +4,8 @@
   "description": "カメラ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
+    "dev:css": "tailwindcss -i ./style/style.css -o ./style/tailwind.css --watch",
     "build": "electron-packager . --overwrite",
     "package": "electron-forge package",
     "make": "electron-forge make",
@@ -31,6 +31,7 @@
     "electron": "^22.0.3"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "tailwindcss": "^3.3.3"
   }
 }
