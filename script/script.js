@@ -1,14 +1,14 @@
-document.addEventListener("fullscreenchange", (event) => {
+document.addEventListener("fullscreenchange", () => {
   if (document.fullscreenElement) {
     console.log(
-      `Element: ${document.fullscreenElement.id} entered fullscreen mode.`
+      `Element: ${document.fullscreenElement.id} entered fullscreen mode.`,
     );
-    document.querySelector("header").style.display = "none";
-    document.querySelector("nav").style.display = "none";
+    document.querySelector("header").classList.add("hidden");
+    document.querySelector("nav").classList.add("hidden");
   } else {
     console.log("Leaving fullscreen mode.");
-    document.querySelector("header").style.display = "block";
-    document.querySelector("nav").style.display = "grid";
+    document.querySelector("header").classList.add("block");
+    document.querySelector("nav").classList.add("grid");
   }
 });
 function showFullScreen() {
