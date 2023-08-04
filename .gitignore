@@ -130,4 +130,7 @@ dist
 .pnp.*
 
 
-.attack25-win32-x64/
+# lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
